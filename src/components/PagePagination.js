@@ -1,10 +1,11 @@
 import React from 'react'
 import { Pagination } from 'semantic-ui-react'
 
-const PagePagination = props => {
+const PagePagination = ({pageCount, handlePageChange, page}) => {
     return (
-        <Pagination defaultActivePage={1}
-        totalPages={10}
+        <Pagination defaultActivePage={page}
+        onPageChange={handlePageChange}
+         totalPages={pageCount}
          />
     )
 

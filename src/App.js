@@ -1,38 +1,28 @@
 import React, {useState, useEffect} from 'react'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {Input} from 'semantic-ui-react'
 import axios from 'axios'
+import CardDetails from './pages/CardDetails'
 import NavHeader from './components/NavHeader'
 import PagePagination from './components/PagePagination'
 import PokemonCardList from './components/PokemonCardList'
+
 function App() {
-  const baseURL = 'https://api.pokemontcg.io/v1/cards'
-
-  const [pokemon, setPokemon] = useState([])
-  const [page, setPage] = useState(1)
-  const [currentUrl, setCurrentUrl] = useState(baseURL)
-  const [loading, setloading] = useState(true)
-
-  useEffect(() => {
-    setloading(true)
-    axios.get(baseURL)
-    .then(pokemon => {
-      setPokemon(pokemon.data.cards)
-      console.log(pokemon.data.cards)
-    }).catch(err => console.log(err))
-    }, [])
-  
-
- // if(loading) return 'Please Wait...'
-
 
   return (
     <div className="App">
     <NavHeader/>
-     <h1>Hey react app</h1>
+
+    <Router>
+      <Route exact path='/' component={PokemonCardList} />
+      {/* <Route exact path='/:id' component={CardDetails} /> */}
+    </Router>
+
+      {/* <Input fluid action='search' onChange={queryCard} onClick={searchCard} placeholder='Pikachu'/>
 
      <PokemonCardList pokemon={pokemon} />
 
-     <PagePagination 
-     />
+     <PagePagination pageCount={pageCount} page={page} onPageChange={handlePageChange}/> */}
     </div>
   );
 }

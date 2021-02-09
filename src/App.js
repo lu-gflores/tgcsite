@@ -14,12 +14,7 @@ function App() {
       <Route exact path='/' component={PokemonCardList} />
       <Route exact path='/:id' component={CardDetails} />
     </Router>
-
-      {/* <Input fluid action='search' onChange={queryCard} onClick={searchCard} placeholder='Pikachu'/>
-
-     <PokemonCardList pokemon={pokemon} />
-
-     <PagePagination pageCount={pageCount} page={page} onPageChange={handlePageChange}/> */}
+    
     </div>
   );
 }

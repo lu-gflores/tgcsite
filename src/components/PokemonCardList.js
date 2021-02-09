@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import {Container, Card} from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
+import {Container, Input} from 'semantic-ui-react'
+import PagePagination from '../pages/CardDetails'
 
 const PokemonCardList = () => {
     const [pokemon, setPokemon] = useState([])
@@ -8,13 +10,14 @@ const PokemonCardList = () => {
     const [page, setPage] = useState(0)
     const [pageCount, setPageCount] = useState(1)
     const [loading, setloading] = useState(true)
-    const baseURL = `https://api.pokemontcg.io/v1/cards?name=${query}&page=${page}`
+    const [input, setInput] = useState('');
+    const baseURL = `https://api.pokemontcg.io/v2/cards?name=${query}&page=${page}`
     
     useEffect(() => {
-      setloading(true)
+      //setloading(true)
       axios.get(baseURL)
       .then(pokemon => {
-        setloading(false)
+        //setloading(false)
         setPokemon(pokemon.data.cards)
         setPageCount(10)
       }).catch(err => console.log(err))
@@ -35,17 +38,27 @@ const PokemonCardList = () => {
     })
   }
   
-   if(loading) return 'Please Wait...'
+   //if(loading) return 'Please Wait...'
   
   
     return (
         <Container>
 
-        <Card.Group itemsPerRow={4}>
-        {pokemon.map(pokeCard => (
-            <Card key={pokeCard.id} color='orange' image={pokeCard.imageUrl} />
-        ))}
-        </Card.Group>
+        <Input fluid name='pokemon' onChange={queryCard} onClick={searchCard} placeholder='Pikachu'/>
+        
+        {pokemon && (
+
+        <div className="ui four cards">
+
+          {pokemon.map(pokeCard => (       
+              <Link to={`/${pokeCard.id}`} className="ui raised card" key={pokeCard.id}>
+                <div className="image">
+                  <img src={`${pokeCard.imageUrl}`} alt={`${pokeCard.name}`} />
+                </div>
+              </Link>    
+          ))}
+        </div> 
+        )}        
         </Container>
     )
 }

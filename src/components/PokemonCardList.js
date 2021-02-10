@@ -17,7 +17,6 @@ const PokemonCardList = () => {
       //setloading(true)
       axios.get(baseURL)
       .then(pokemon => {
-        console.log(pokemon.data)
         //setloading(false)
         setPokemon(pokemon.data.data)
         //setPageCount(10)
@@ -40,8 +39,6 @@ const PokemonCardList = () => {
   }
   
    //if(loading) return 'Please Wait...'
-  
-  
     return (
         <Container>
 

@@ -1,54 +1,52 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
-import {Container, Input} from 'semantic-ui-react'
-import PagePagination from '../pages/CardDetails'
+import {Container, Pagination} from 'semantic-ui-react'
+
 
 const PokemonCardList = () => {
-    const [pokemon, setPokemon] = useState(null)
+    const [pokemon, setPokemon] = useState([])
     const [query, setQuery] = useState('')
-    const [pageSize, setPageSize] = useState(10)
-    // const [pageCount, setPageCount] = useState(1)
-    // const [loading, setloading] = useState(true)
-    // const [input, setInput] = useState('');
-    const baseURL = `https://api.pokemontcg.io/v2/cards?`
+    // const [pageSize, setPageSize] = useState(25)
+    const [activePage, setActivePage] = useState(1)
+    const [loading, setloading] = useState(false)
+    const [apiUrl, setApiUrl] = useState('https://api.pokemontcg.io/v2/cards?pageSize=24')
+    //const apiUrl = `https://api.pokemontcg.io/v2/cards?`
     
     useEffect(() => {
-      //setloading(true)
-      axios.get(baseURL)
+      setloading(true)
+      axios.get(apiUrl)
       .then(pokemon => {
-        //setloading(false)
+        setloading(false)
         setPokemon(pokemon.data.data)
-        //setPageCount(10)
       }).catch(err => console.log(err))
-      }, [baseURL])
+      }, [apiUrl])
     
-  const handlePageChange = (event, value) => {
-    //setPage(value)
-  }
+    const onChange = (e, pageInfo) => {
+      setActivePage(pageInfo.activePage)
+      setApiUrl(apiUrl + `&page=${pageInfo.activePage}`)
+    }
+      
+    const queryCard = e => {
+      setQuery(e.target.value)
+    }
   
-  const queryCard = e => {
-    setQuery(e.target.value)
-  }
+    const searchCard = () => {
+      axios.get(apiUrl + `&q=name:${query}`)
+      .then(pokemon => {
+        setPokemon(pokemon.data.data)
+        })
+    }
   
-  const searchCard = () => {
-    axios.get(baseURL+ `q=name:${query}`)
-    .then(pokemon => {
-      console.log(pokemon.data)
-      setPokemon(pokemon.data.data)
-    })
-  }
-  
-   //if(loading) return 'Please Wait...'
+   if(loading) return 'Please Wait...'
     return (
         <Container>
-        <div className="ui fluid action input">
+        
+        <div className="ui center aligned action input">
           <input type="text" onChange={queryCard} name='card' placeholder='Search card...'/>
           <button className='ui button' onClick={searchCard} type='button'>Search</button>
         </div>
-        
-        {/* <Input fluid name='pokemon' onChange={queryCard} action={searchCard} placeholder='Pikachu'/> */}
-        
+
         {pokemon && (
 
         <div className="ui four cards">
@@ -61,8 +59,8 @@ const PokemonCardList = () => {
               </Link>    
           ))}
         </div> 
-
         )}        
+          <Pagination activePage={activePage} onPageChange={onChange} totalPages={10} ellipsisItem={null} />
         </Container>
     )
 }

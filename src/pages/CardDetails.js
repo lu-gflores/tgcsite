@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import axios from 'axios'
-import {Container} from 'semantic-ui-react'
+import {Container, Segment, Image} from 'semantic-ui-react'
 
 class CardDetails extends React.Component {
     constructor() {
@@ -18,9 +18,13 @@ class CardDetails extends React.Component {
         return(
             <Container>
                 {this.state.data.length !==0 &&
-                <h2>{this.state.data.name}</h2>
-                
-                
+                <Segment> 
+                    <Image src={this.state.data.images.small} alt={this.state.data.name} floated='left'/>
+                    <h2>{this.state.data.name}</h2>
+                    <h3>Artist: {this.state.data.artist}</h3>
+                    
+                    <h4>Prices:From ${this.state.data.tcgplayer.prices.holofoil.low} to  ${this.state.data.tcgplayer.prices.holofoil.high}</h4>
+                </Segment>
                 }
             </Container>
         )

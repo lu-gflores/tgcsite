@@ -29,7 +29,7 @@ const PokemonCardList = () => {
     }
       
     const queryCard = e => {
-      setQuery(e.target.value)
+      setQuery(e.target.value.replace(/\s/g, ''))
     }
   
     const searchCard = () => {

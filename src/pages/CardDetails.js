@@ -33,7 +33,7 @@ const CardDetails = () => {
 
             {card.length !== 0  && 
                 
-            <Segment textAlign='left'>
+            <Segment padded='very' textAlign='left'>
                 <Image src={card.images.small}  alt={card.name} floated='left'/>
                     <h1>{card.name}</h1>
                     <h2>Set: <Image src={card.set.images.symbol} size='mini' spaced/> {card.set.name}, {card.set.series} series </h2>

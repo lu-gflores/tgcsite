@@ -1,6 +1,26 @@
-# Getting Started with Create React App
+# Pokemon Trading Card React App
+
+![Using-JS](https://img.shields.io/badge/Using-JS-yellow)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Description
+
+A react application where you can search pokemon cards and read their specific details
+
+![Main Screen](/assets/cardSite.jpg)
+
+## Demo
+
+Currently in progress
+
+## Resources and Tech used:
+
+- [Pokemon TCG API](https://pokemontcg.io/)
+- [Semantic UI React](https://react.semantic-ui.com/)
+- [Styled Components](https://styled-components.com/)
+- [React Router](https://reactrouter.com/web/guides/quick-start)
+- [Axios](https://www.npmjs.com/package/axios)
 
 ## Available Scripts
 

@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
 import {Container, Segment, Image} from 'semantic-ui-react'
 import Pokemon from '../components/Pokemon'
+import Trainer from '../components/Trainer'
 
 const CardDetails = () => {
     const [card, setCard] = useState([])
@@ -18,22 +19,40 @@ const CardDetails = () => {
         fetchData()      
     }, [id])
 
+    const cardType = card.supertype 
+    let cardData
+    if(cardType === 'Pokemon') {
+        cardData = <Pokemon attacks={card.attacks} />
+    }
+    if(cardType === 'Trainer') {
+        cardData = <Trainer rules={card.rules} />
+    }
     return(
         <Container>
             <Link to='/' className='ui button'>Back</Link>
 
             {card.length !== 0  && 
                 
-            <Segment>
+            <Segment textAlign='left'>
                 <Image src={card.images.small}  alt={card.name} floated='left'/>
-                    <h2>{card.name}</h2>
-                    <h5>Rarity: {card.rarity}</h5>
+                    <h1>{card.name}</h1>
+                    <h2>Set: <Image src={card.set.images.symbol} size='mini' spaced/> {card.set.name}, {card.set.series} series </h2>
+                    <h2>Released In: {card.set.releaseDate}</h2>
+                    <h2>Rarity: {card.rarity}</h2>
+                    <h5>Number: {card.number}</h5>
                     <h5>Artist: {card.artist}</h5>
+                    <h5>Type: {card.subtypes}</h5>
+                    {cardData}
+
+                    <h5>Prices URL: <a href={card.tcgplayer.url} target='_blank' rel="noreferrer">TGC Site</a></h5>
+
+
             </Segment>      
              }
         </Container>
     )
 }
+
 
 // class CardDetails extends React.Component {
 //     constructor() {

@@ -3,7 +3,7 @@ import React from 'react'
 const Pokemon = (props) => {
     return (
         <div>
-            <h1>{props.name}</h1>
+            <p>{props.attacks[0].name}</p>
         </div>
     )
 }

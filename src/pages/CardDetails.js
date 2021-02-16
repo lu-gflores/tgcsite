@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
-import {Container, Segment, Image} from 'semantic-ui-react'
+import styled from 'styled-components'
+import {Container, Segment, Image, Divider, Table} from 'semantic-ui-react'
 import Pokemon from '../components/Pokemon'
 import Trainer from '../components/Trainer'
 
@@ -33,9 +34,12 @@ const CardDetails = () => {
 
             {card.length !== 0  && 
                 
-            <Segment padded='very' textAlign='left'>
-                <Image src={card.images.small}  alt={card.name} floated='left'/>
+            <Segment padded='very'>         
+                <Image src={card.images.small}  alt={card.name} floated='right'/>
                     <h1>{card.name}</h1>
+                    <Divider />
+
+                    <Container textAlign='justified'>
                     <h2>Set: <Image src={card.set.images.symbol} size='mini' spaced/> {card.set.name}, {card.set.series} series </h2>
                     <h2>Released In: {card.set.releaseDate}</h2>
                     <h2>Rarity: {card.rarity}</h2>
@@ -46,12 +50,17 @@ const CardDetails = () => {
 
                     <h5>Prices URL: <a href={card.tcgplayer.url} target='_blank' rel="noreferrer">TGC Site</a></h5>
 
-
+                    </Container>
             </Segment>      
              }
         </Container>
     )
 }
+
+const cardDesc = styled.div`
+
+
+`
 
 
 // class CardDetails extends React.Component {

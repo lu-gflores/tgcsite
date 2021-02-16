@@ -1,9 +1,10 @@
 import React from 'react'
 
-const Pokemon = (props) => {
+const Pokemon = ({attacks, abilities}) => {
+
     return (
         <div>
-            <p>{props.attacks[0].name}</p>
+            {attacks.map((attack, idx) => <p key={idx}><strong>{attack.name}</strong>: {attack.text}</p> )}
         </div>
     )
 }

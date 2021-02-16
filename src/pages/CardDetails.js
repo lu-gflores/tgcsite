@@ -15,18 +15,19 @@ const CardDetails = () => {
             const result = await
             axios.get(`https://api.pokemontcg.io/v2/cards/${id}`)
             console.log(result.data.data)
-            setCard(result.data.data)  
+            setCard(result.data.data)
         }
         fetchData()      
     }, [id])
 
     const cardType = card.supertype 
     let cardData
-    if(cardType === 'Pokemon') {
-        cardData = <Pokemon attacks={card.attacks} />
-    }
+    
     if(cardType === 'Trainer') {
         cardData = <Trainer rules={card.rules} />
+    }
+    if(cardType === 'Pokémon') {
+        cardData = <Pokemon attacks={card.attacks} abilities={card.abilities} />
     }
     return(
         <Container>

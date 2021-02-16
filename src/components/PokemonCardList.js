@@ -43,10 +43,12 @@ const PokemonCardList = () => {
     return (
         <Container>
         
-        <SearchInput className="ui action input">
+        <Container textAlign='center'>
+        <SearchInput className="ui big action input">
           <input type="text" onChange={queryCard} name='card' placeholder='Search card...'/>
           <button className='ui button' onClick={searchCard} type='button'>Search</button>
         </SearchInput>
+        </Container>
 
         {pokemon && (
 
@@ -71,7 +73,7 @@ const PokemonCardList = () => {
 }
 
 const SearchInput = styled.div.attrs(props => ({
-  className: 'ui action input',
+  className: 'ui big action input',
 }))`
   padding: 1.5rem 1.5rem;
 `

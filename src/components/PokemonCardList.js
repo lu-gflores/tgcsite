@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
-import {Container, Pagination} from 'semantic-ui-react'
+import {Container, Pagination, Dimmer, Loader} from 'semantic-ui-react'
 
 
 const PokemonCardList = () => {
@@ -39,7 +39,9 @@ const PokemonCardList = () => {
         })
     }
   
-   if(loading) return 'Please Wait...'
+   if(loading) {
+     return <Dimmer active><Loader /></Dimmer>
+   }
     return (
         <Container>
         

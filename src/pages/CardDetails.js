@@ -1,23 +1,30 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
-import {Container, Segment, Image, Divider, Table} from 'semantic-ui-react'
+import {Container, Segment, Image, Divider, Dimmer, Loader} from 'semantic-ui-react'
 import Pokemon from '../components/Pokemon'
 import Trainer from '../components/Trainer'
 
 const CardDetails = () => {
     const [card, setCard] = useState([])
+    const [loading, setloading] = useState(false)
     const {id} = useParams()
 
     useEffect(() => {
+        setloading(true)
         const fetchData = async () => {
             const result = await
             axios.get(`https://api.pokemontcg.io/v2/cards/${id}`)
             console.log(result.data.data)
             setCard(result.data.data)
+            setloading(false)
         }
         fetchData()      
     }, [id])
+
+    if(loading) {
+        return <Dimmer active><Loader /></Dimmer>
+    }
 
     const cardType = card.supertype 
     let cardData

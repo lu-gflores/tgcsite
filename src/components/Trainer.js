@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Trainer = (props) => {
+const Trainer = ({rules}) => {
     return (
         <div>
-            <p>{props.rules}</p>
+            <p>{rules}</p>
         </div>
     )
 }

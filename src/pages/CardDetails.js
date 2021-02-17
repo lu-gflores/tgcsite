@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 import {Container, Segment, Image, Divider, Dimmer, Loader} from 'semantic-ui-react'
 import Pokemon from '../components/Pokemon'
 import Trainer from '../components/Trainer'
+import Loading from '../components/Loading'
 
 const CardDetails = () => {
     const [card, setCard] = useState([])
@@ -23,7 +24,7 @@ const CardDetails = () => {
     }, [id])
 
     if(loading) {
-        return <Dimmer active><Loader /></Dimmer>
+        return <Loading active={loading} />
     }
 
     const cardType = card.supertype 

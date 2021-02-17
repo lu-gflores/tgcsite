@@ -3,7 +3,7 @@ import axios from 'axios'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 import {Container, Pagination, Dimmer, Loader} from 'semantic-ui-react'
-
+import Loading from '../components/Loading'
 
 const PokemonCardList = () => {
     const [pokemon, setPokemon] = useState([])
@@ -40,7 +40,7 @@ const PokemonCardList = () => {
     }
   
    if(loading) {
-     return <Dimmer active><Loader /></Dimmer>
+     return <Loading active ={loading}/>
    }
     return (
         <Container>
@@ -74,9 +74,7 @@ const PokemonCardList = () => {
     )
 }
 
-const SearchInput = styled.div.attrs(props => ({
-  className: 'ui big action input',
-}))`
+const SearchInput = styled.div`
   padding: 1.5rem 1.5rem;
 `
 

@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
-import {Container, Pagination, Dimmer, Loader} from 'semantic-ui-react'
+import {Container, Pagination} from 'semantic-ui-react'
+import {motion} from 'framer-motion'
 import Loading from '../components/Loading'
 
 const PokemonCardList = () => {

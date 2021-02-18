@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
 import {Container, Segment, Image, Divider} from 'semantic-ui-react'
+import {motion} from 'framer-motion'
 import Pokemon from '../components/Pokemon'
 import Trainer from '../components/Trainer'
 import Loading from '../components/Loading'
@@ -43,7 +44,7 @@ const CardDetails = () => {
             {card.length !== 0  && 
                 
             <Segment padded='very'>         
-                <Image src={card.images.small}  alt={card.name} floated='right'/>
+                <motion.img whileHover={{scale: 1.1}} src={card.images.small}  alt={card.name} className='ui right floated image'/>
                     <h1>{card.name}</h1>
                     <Divider />
 

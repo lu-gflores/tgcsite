@@ -12,7 +12,7 @@ A react application where you can search pokemon cards and read their specific d
 
 ## Demo
 
-![Link Here](poketcgsite-react.netlify.app)
+[Link Here](https://poketcgsite-react.netlify.app)
 
 ## Resources and Tech used:
 

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
-import {Container, Segment, Image, Divider, Dimmer, Loader} from 'semantic-ui-react'
+import {Container, Segment, Image, Divider} from 'semantic-ui-react'
 import Pokemon from '../components/Pokemon'
 import Trainer from '../components/Trainer'
 import Loading from '../components/Loading'

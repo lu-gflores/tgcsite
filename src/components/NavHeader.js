@@ -1,6 +1,6 @@
 import React from 'react'
-import {Header, Container, Image} from 'semantic-ui-react'
-import Pokeball from '../images/pokeball.jpg'
+import {Header, Container} from 'semantic-ui-react'
+import Pokeball from '../images/pokeball.png'
 import { motion } from 'framer-motion'
 
 const NavHeader = () => {
@@ -8,7 +8,7 @@ const NavHeader = () => {
         <div>
             <Container>
             <Header as='h1' icon textAlign='center'>
-                <motion.img animate={{rotate: 360}} transition={{duration: 3}} class='ui image' src={Pokeball} />
+                <motion.img animate={{rotate: 360}} transition={{duration: 3}} className='ui image' src={Pokeball} />
                 <Header.Content>Pokemon Trading Card React App</Header.Content>
             </Header>            
             </Container>

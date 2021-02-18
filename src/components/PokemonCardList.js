@@ -55,7 +55,7 @@ const PokemonCardList = () => {
 
         {pokemon && (
 
-        <div className="ui centered cards">
+        <CardsContainer className="ui centered cards">
         
           {pokemon.map(pokeCard => (       
               <Link to={`/${pokeCard.id}`} name={pokeCard.name} image={pokeCard.images.small} className="ui card" key={pokeCard.id}>
@@ -64,7 +64,7 @@ const PokemonCardList = () => {
                 </div>
               </Link>    
           ))}
-        </div> 
+        </CardsContainer> 
         )}  
           
           <Container textAlign='center' >
@@ -74,6 +74,14 @@ const PokemonCardList = () => {
         </Container>
     )
 }
+
+const CardsContainer =  styled.div`
+  padding-bottom: 2rem;
+  margin: 1rem 1rem;
+  background-color:#bd4444;
+  border-radius: 10% / 40%;
+`
+
 
 const SearchInput = styled.div`
   padding: 1.5rem 1.5rem;

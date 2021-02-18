@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body {
-    background-color: #d0d0d8;
+    background-color: #fff;
     overflow-x: hidden;
 }
 
